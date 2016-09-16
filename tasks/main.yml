@@ -1,0 +1,8 @@
+---
+- name: Install Pages via Mac App Store
+  command: mas install "{{ item.id }}"
+  args:
+    creates: /Applications/{{ item.name }}.app
+  with_items:
+    - { id: 409201541, name: "Pages" }
+  when: ansible_os_family == "Darwin"
